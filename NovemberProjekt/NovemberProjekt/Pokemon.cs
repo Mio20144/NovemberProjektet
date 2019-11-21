@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NovemberProjekt
 {
-    class Pokemon
+    class Pokemon : Character
     {
         public string name;
 
@@ -35,6 +35,9 @@ namespace NovemberProjekt
             }
         }
 
-
+        public void Attack()
+        {
+            Console.WriteLine(stats[4].base_stat); 
+        }
     }
 }
