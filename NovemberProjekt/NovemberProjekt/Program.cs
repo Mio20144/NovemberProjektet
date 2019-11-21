@@ -75,8 +75,39 @@ namespace NovemberProjekt
             Console.WriteLine();
             p2.PrintStats();
             Console.ReadLine();
-            p1.Attack();
+            
+            p1.GetAttack();
+            p1.GetDefense();
+            p1.GetHp();
+            p2.GetAttack();
+            p2.GetDefense();
+            p2.GetHp();
+            while (p1.hp > 0 && p2.hp > 0)
+            {
+                Console.WriteLine(p1.name + " attacks " + p2.name);
+                p2.TakeDamage(p1.attack);
+                Console.WriteLine(p2.name + " has " + p2.hp + " hp left");
+                Console.ReadLine();
+                Console.WriteLine(p2.name + " attacks " + p1.name);
+                p1.TakeDamage(p2.attack);
+                Console.WriteLine(p1.name + " has " + p1.hp + " hp left");
+            }
 
+            if (p2.hp <= 0)
+            {
+                Console.WriteLine("Congratulations, " + p1.name + " won the battle");
+            }
+            
+            if (p1.hp <= 0)
+            {
+                Console.WriteLine("Too bad " + p2.name + " won the battle");
+
+            }
+            
+            if (p2.hp <= 0 && p1.hp <= 0)
+            {
+                Console.WriteLine("It's a tie! Nobody wins");
+            }
 
 
 
