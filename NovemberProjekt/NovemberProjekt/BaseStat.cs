@@ -8,8 +8,10 @@ namespace NovemberProjekt
 {
     class BaseStat
     {
+        //värdet på stats
         public int base_stat;
 
+        //anropas stat-klassen
         public Stat stat;
 
 

@@ -8,7 +8,7 @@ namespace NovemberProjekt
 {
     class Stat
     {
-
+        //stats namn
         public string name;
 
     }

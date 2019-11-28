@@ -10,9 +10,11 @@ namespace NovemberProjekt
     {
         public string name;
 
+        //när API anropas så skapas två arrayer av Type i Typeslot: en för slot och en för namn
         public TypeSlot[] types;
 
         public BaseStat[] stats;
+        //attack, defense och hp deklareras här så att de kan användas
         public int attack = 0;
         public int defense = 0;
         public int hp = 0;
@@ -21,7 +23,7 @@ namespace NovemberProjekt
         {
             Console.WriteLine(name);
         }
-
+        //metod som skriver ut namn på alla types
         public void PrintTypes()
         {
             for (int i = 0; i < types.Length; i++)
@@ -29,6 +31,7 @@ namespace NovemberProjekt
                 Console.WriteLine(types[i].type.name);
             }
         }
+        //metod som skriver ut stats namn och värden. Använder bara tre stats
         public void PrintStats()
         {
             for (int i = 3; i < stats.Length; i++)
@@ -37,7 +40,7 @@ namespace NovemberProjekt
                 Console.WriteLine(stats[i].base_stat);
             }
         }
-
+        //ger attack ett värde baserat på API värde på attack
         public void GetAttack()
         {
             attack = stats[4].base_stat;
@@ -50,6 +53,7 @@ namespace NovemberProjekt
         {
             hp = stats[5].base_stat;
         }
+        //metod som gör att pokemon kan ta skada beroende på andra pokemons attack
         public void TakeDamage(int attack)
         {
 
