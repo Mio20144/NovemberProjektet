@@ -99,7 +99,7 @@ namespace NovemberProjekt
             //Fighten spelas så länge båda pokemon lever
             while (p1.hp > 0 && p2.hp > 0)
             {
-                Console.WriteLine();
+                
                 Console.WriteLine("You can attack, or you can heal your Pokemon");
                 Console.WriteLine("1. Attack");
                 Console.WriteLine("2. Heal (" + potion + " potions left)");
@@ -118,7 +118,7 @@ namespace NovemberProjekt
                     {
                         p1.hp += 20;
                         potion -= 1;
-                        Console.WriteLine("You heal your Pokemon for 10 hp");
+                        Console.WriteLine("You heal your Pokemon for 20 hp");
                     }
                     else
                     {
@@ -135,7 +135,7 @@ namespace NovemberProjekt
                 if (p2.hp > 0)
                 {
                     Console.WriteLine();
-                    if (p2.hp > 15)
+                    if (p2.hp > 15 || enemyPotion == 0)
                     {
                         Console.WriteLine(p2.name + " attacks " + p1.name);
                         p1.TakeDamage(p2.attack);
@@ -145,8 +145,9 @@ namespace NovemberProjekt
                     {
                         p2.hp += 20;
                         enemyPotion -= 1;
-                        Console.WriteLine(p2.name + " heals for 10 hp");
+                        Console.WriteLine(p2.name + " heals for 20 hp");
                     }
+                    
                 }
                 
             }
