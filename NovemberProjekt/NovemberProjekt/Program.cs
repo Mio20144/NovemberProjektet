@@ -14,6 +14,8 @@ namespace NovemberProjekt
         {
             
             bool succes = false;
+            int potion = 2;
+            int enemyPotion = 2;
             //anropar Pokemonklassen för att skapa en ny pokemon med tomma värden
             Pokemon p1 = new Pokemon();
             Random generator = new Random();
@@ -97,27 +99,67 @@ namespace NovemberProjekt
             //Fighten spelas så länge båda pokemon lever
             while (p1.hp > 0 && p2.hp > 0)
             {
-                Console.WriteLine(p1.name + " attacks " + p2.name);
-                //metod som gör att pokemons attack är separata
-                p2.TakeDamage(p1.attack);
-                Console.WriteLine(p2.name + " has " + p2.hp + " hp left");
-                Console.ReadLine();
+                Console.WriteLine();
+                Console.WriteLine("You can attack, or you can heal your Pokemon");
+                Console.WriteLine("1. Attack");
+                Console.WriteLine("2. Heal (" + potion + " potions left)");
+                string choice = Console.ReadLine();
+                if (choice == "1")
+                {
+                    Console.WriteLine(p1.name + " attacks " + p2.name);
+                    //metod som gör att pokemons attack är separata
+                    p2.TakeDamage(p1.attack);
+                    Console.WriteLine(p2.name + " has " + p2.hp + " hp left");
+                    Console.ReadLine();
+                }
+                else if (choice == "2")
+                {
+                    if (potion > 0)
+                    {
+                        p1.hp += 20;
+                        potion -= 1;
+                        Console.WriteLine("You heal your Pokemon for 10 hp");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You have no potions left");
+                        Console.WriteLine(p1.name + " attacks " + p2.name);
+                        //metod som gör att pokemons attack är separata
+                        p2.TakeDamage(p1.attack);
+                        Console.WriteLine(p2.name + " has " + p2.hp + " hp left");
+                        Console.ReadLine();
+                    }
+                    
+                }
+                
                 if (p2.hp > 0)
                 {
-                    Console.WriteLine(p2.name + " attacks " + p1.name);
-                    p1.TakeDamage(p2.attack);
-                    Console.WriteLine(p1.name + " has " + p1.hp + " hp left");
+                    Console.WriteLine();
+                    if (p2.hp > 15)
+                    {
+                        Console.WriteLine(p2.name + " attacks " + p1.name);
+                        p1.TakeDamage(p2.attack);
+                        Console.WriteLine(p1.name + " has " + p1.hp + " hp left");
+                    }
+                    else if (p2.hp < 15 && enemyPotion > 0)
+                    {
+                        p2.hp += 20;
+                        enemyPotion -= 1;
+                        Console.WriteLine(p2.name + " heals for 10 hp");
+                    }
                 }
                 
             }
 
             if (p2.hp <= 0)
             {
+                Console.Clear();
                 Console.WriteLine("Congratulations, " + p1.name + " won the battle");
             }
             
             if (p1.hp <= 0)
             {
+                Console.Clear();
                 Console.WriteLine("Too bad " + p2.name + " won the battle");
 
             }
