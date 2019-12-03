@@ -119,6 +119,11 @@ namespace NovemberProjekt
                         p1.hp += 20;
                         potion -= 1;
                         Console.WriteLine("You heal your Pokemon for 20 hp");
+                        if (p1.hp > p1.stats[5].base_stat)
+                        {
+                            p1.hp = p1.stats[5].base_stat;
+                        }
+                        Console.WriteLine(p1.name + " has " + p1.hp + " left.");
                     }
                     else
                     {
@@ -135,7 +140,7 @@ namespace NovemberProjekt
                 if (p2.hp > 0)
                 {
                     Console.WriteLine();
-                    if (p2.hp > 15 || enemyPotion == 0)
+                    if (p2.hp >= 15 || enemyPotion == 0)
                     {
                         Console.WriteLine(p2.name + " attacks " + p1.name);
                         p1.TakeDamage(p2.attack);
@@ -146,6 +151,11 @@ namespace NovemberProjekt
                         p2.hp += 20;
                         enemyPotion -= 1;
                         Console.WriteLine(p2.name + " heals for 20 hp");
+                        if (p2.hp > p2.stats[5].base_stat)
+                        {
+                            p2.hp = p2.stats[5].base_stat;
+                        }
+                        Console.WriteLine(p2.name + " has " + p2.hp + " hp left");
                     }
                     
                 }
